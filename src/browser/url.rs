@@ -576,7 +576,9 @@ mod tests {
         assert_eq!(url.path()[1], "path2");
         assert_eq!(
             url.search(),
-            &vec![("calc", vec!["5+6"]), ("x", vec!["1", "2"]),].iter().collect()
+            &vec![("calc", vec!["5+6"]), ("x", vec!["1", "2"]),]
+                .iter()
+                .collect()
         );
         assert_eq!(url.hash(), Some(&"heš".to_owned()));
 
