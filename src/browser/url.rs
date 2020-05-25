@@ -576,7 +576,7 @@ mod tests {
         assert_eq!(url.path()[1], "path2");
         assert_eq!(
             url.search(),
-            &UrlSearch::new(vec![("calc", vec!["5+6"]), ("x", vec!["1", "2"]),])
+            &vec![("calc", vec!["5+6"]), ("x", vec!["1", "2"]),].iter().collect()
         );
         assert_eq!(url.hash(), Some(&"heš".to_owned()));
 
@@ -595,7 +595,7 @@ mod tests {
     fn parse_url_with_hash_search() {
         let expected = Url::new()
             .set_path(&["path"])
-            .set_search(UrlSearch::new(vec![("search", vec!["query"])]))
+            .set_search(vec![("search", vec!["query"])].iter().collect())
             .set_hash("hash");
         let actual: Url = "/path?search=query#hash".parse().unwrap();
         assert_eq!(expected, actual)
@@ -621,7 +621,7 @@ mod tests {
 
         let actual = Url::new()
             .set_path(&["foo", "bar"])
-            .set_search(UrlSearch::new(vec![("q", vec!["42"]), ("z", vec!["13"])]))
+            .set_search(vec![("q", vec!["42"]), ("z", vec!["13"])].iter().collect())
             .set_hash_path(&["discover"])
             .to_string();
 
